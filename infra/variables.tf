@@ -26,7 +26,7 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
-# Keep at 1 while developing to avoid double EC2 usage.
+# Keep at 1 while developing to avoid double EC2 usage. hi
 # Bump to 2 only briefly to demo the Auto Scaling Group across both AZs.
 variable "asg_min_size" {
   default = 1
