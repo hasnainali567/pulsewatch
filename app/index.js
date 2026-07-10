@@ -31,7 +31,8 @@ app.get("/", async (req, res) => {
     dbStatus = "error: " + err.message;
   }
   res.json({
-    message: "PulseWatch app is running on EC2",
+    message:
+      "PulseWatch app is running on EC2 with PostgreSQL database connectivity. and Github Actions CI/CD pipeline.",
     hostname: os.hostname(),
     database: dbStatus,
   });
