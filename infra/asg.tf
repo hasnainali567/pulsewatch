@@ -31,7 +31,7 @@ resource "aws_launch_template" "app" {
 
   tag_specifications {
     resource_type = "instance"
-    tags = { Name = "${var.project_name}-app" }
+    tags          = { Name = "${var.project_name}-app" }
   }
 }
 
@@ -57,11 +57,11 @@ resource "aws_autoscaling_group" "app" {
 }
 
 resource "aws_autoscaling_policy" "scale_up" {
-  name                    = "${var.project_name}-scale-up"
-  autoscaling_group_name  = aws_autoscaling_group.app.name
-  adjustment_type         = "ChangeInCapacity"
-  scaling_adjustment      = 1
-  cooldown                = 60
+  name                   = "${var.project_name}-scale-up"
+  autoscaling_group_name = aws_autoscaling_group.app.name
+  adjustment_type        = "ChangeInCapacity"
+  scaling_adjustment     = 1
+  cooldown               = 60
 }
 
 resource "aws_cloudwatch_metric_alarm" "cpu_high" {

@@ -17,7 +17,7 @@ resource "aws_db_instance" "main" {
   vpc_security_group_ids = [aws_security_group.db.id]
   multi_az               = var.rds_multi_az
   storage_encrypted      = true
-  kms_key_id              = aws_kms_key.rds.arn
+  kms_key_id             = aws_kms_key.rds.arn
   skip_final_snapshot    = true
   publicly_accessible    = false
 }
