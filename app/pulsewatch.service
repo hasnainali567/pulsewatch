@@ -1,0 +1,13 @@
+[Unit]
+Description=PulseWatch App
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/pulsewatch.env
+WorkingDirectory=/opt/app
+ExecStart=/usr/bin/node /opt/app/index.js
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

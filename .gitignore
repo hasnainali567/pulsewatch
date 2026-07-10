@@ -1,0 +1,8 @@
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+node_modules/
+*.pem
+*/variables.tf

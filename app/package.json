@@ -1,0 +1,12 @@
+{
+  "name": "pulsewatch-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node -c index.js && echo 'Syntax OK'"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  }
+}
