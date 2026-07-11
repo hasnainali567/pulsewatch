@@ -32,7 +32,7 @@ app.get("/", async (req, res) => {
   }
   res.json({
     message:
-      "PulseWatch app is running on EC2 with PostgreSQL database connectivity. and Github Actions CI/CD pipeline.",
+      "PulseWatch app is running on EC2 with PostgreSQL database connectivity. and Github Actions CI/CD pipeline. and Packer for AMI creation. and Terraform for infrastructure provisioning. and Ansible for configuration management. and Prometheus for monitoring. and Grafana for visualization.",
     hostname: os.hostname(),
     database: dbStatus,
   });
