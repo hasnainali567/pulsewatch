@@ -44,7 +44,7 @@ build {
     ]
   }
 
-  # Copy the app code onto the instance
+  # Copy the backend app code onto the instance
   provisioner "file" {
     source      = "../app/index.js"
     destination = "/tmp/index.js"
@@ -60,13 +60,54 @@ build {
     destination = "/tmp/pulsewatch.service"
   }
 
-  # Install app into /opt/app, install deps, register systemd service
+  # Copy the frontend source onto the instance
+  provisioner "file" {
+    source      = "../app/frontend/package.json"
+    destination = "/tmp/frontend/package.json"
+  }
+
+  provisioner "file" {
+    source      = "../app/frontend/vite.config.js"
+    destination = "/tmp/frontend/vite.config.js"
+  }
+
+  provisioner "file" {
+    source      = "../app/frontend/index.html"
+    destination = "/tmp/frontend/index.html"
+  }
+
+  provisioner "file" {
+    source      = "../app/frontend/src"
+    destination = "/tmp/frontend/src"
+  }
+
+  # Install backend into /opt/app and install deps
   provisioner "shell" {
     inline = [
       "sudo mkdir -p /opt/app",
       "sudo mv /tmp/index.js /opt/app/index.js",
       "sudo mv /tmp/package.json /opt/app/package.json",
-      "cd /opt/app && sudo npm install --production",
+      "cd /opt/app && sudo npm install --production"
+    ]
+  }
+
+  # Build the React frontend (separate provisioner so build failure stops the AMI build)
+  provisioner "shell" {
+    inline = [
+      "sudo mkdir -p /opt/app/frontend",
+      "sudo mv /tmp/frontend/package.json /opt/app/frontend/package.json",
+      "sudo mv /tmp/frontend/vite.config.js /opt/app/frontend/vite.config.js",
+      "sudo mv /tmp/frontend/index.html /opt/app/frontend/index.html",
+      "sudo mv /tmp/frontend/src /opt/app/frontend/src",
+      "cd /opt/app/frontend && sudo npm install && sudo npm run build",
+      "# Clean up frontend source (only dist/ is needed at runtime)",
+      "sudo rm -rf /opt/app/frontend/node_modules /opt/app/frontend/src /opt/app/frontend/package.json /opt/app/frontend/vite.config.js /opt/app/frontend/index.html"
+    ]
+  }
+
+  # Register systemd service
+  provisioner "shell" {
+    inline = [
       "sudo mv /tmp/pulsewatch.service /etc/systemd/system/pulsewatch.service",
       "sudo systemctl daemon-reload",
       "sudo systemctl enable pulsewatch"

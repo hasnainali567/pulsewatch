@@ -1,9 +1,13 @@
 const express = require("express");
 const { Pool } = require("pg");
+const path = require("path");
 const os = require("os");
 
 const app = express();
 app.use(express.json());
+
+// Serve the built React frontend as static files
+app.use(express.static(path.join(__dirname, "frontend", "dist")));
 
 const pool = new Pool({
   host: process.env.DB_HOST,

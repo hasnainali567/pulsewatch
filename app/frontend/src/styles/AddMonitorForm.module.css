@@ -1,0 +1,129 @@
+/* ── AddMonitorForm ── */
+.form {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  animation: fadeIn 0.3s ease;
+}
+
+.heading {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.fields {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 160px;
+}
+
+.field label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.field input {
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.field input::placeholder {
+  color: var(--text-muted);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  background: var(--bg-input-focus);
+}
+
+.field input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button {
+  background: var(--accent-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 28px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.button:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Feedback messages ── */
+.feedback {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.success {
+  background: var(--accent-green-glow);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.error {
+  background: var(--accent-red-glow);
+  color: var(--accent-red);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .form {
+    padding: 20px 16px;
+  }
+  .fields {
+    flex-direction: column;
+  }
+  .button {
+    width: 100%;
+  }
+}

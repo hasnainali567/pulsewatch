@@ -1,0 +1,170 @@
+/* ── MonitorDetail ── */
+.detail {
+  animation: fadeIn 0.3s ease;
+}
+
+/* ── Back Button ── */
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  margin-bottom: 24px;
+}
+
+.backButton:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+  background: var(--bg-card);
+}
+
+/* ── Hero ── */
+.hero {
+  margin-bottom: 32px;
+}
+
+.name {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.hero .url {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+.created {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* ── Sections ── */
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-default);
+}
+
+/* ── Table ── */
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.table th {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  font-weight: 500;
+  text-align: left;
+  padding: 10px 14px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 10px 14px;
+  border-top: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.table tr:hover td {
+  background: rgba(59, 130, 246, 0.04);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ── Status dot in table ── */
+.statusDot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.statusDot.up {
+  background: var(--accent-green);
+  box-shadow: var(--shadow-glow-green);
+}
+
+.statusDot.down {
+  background: var(--accent-red);
+  box-shadow: var(--shadow-glow-red);
+}
+
+/* ── States ── */
+.loadingBox,
+.errorBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.errorBox {
+  color: var(--accent-red);
+}
+
+.errorIcon {
+  font-size: 1.5rem;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border-default);
+  border-top-color: var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.empty {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 20px;
+  text-align: center;
+}

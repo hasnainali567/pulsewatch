@@ -1,0 +1,150 @@
+/* ── MonitorCard ── */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s,
+    transform 0.15s;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  width: 100%;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--text-muted);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
+}
+
+.card:active {
+  transform: translateY(0);
+}
+
+/* ── Card Header ── */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Status Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.badge.up {
+  background: var(--accent-green-glow);
+  color: var(--accent-green);
+}
+
+.badge.down {
+  background: var(--accent-red-glow);
+  color: var(--accent-red);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.badge.unknown {
+  background: var(--accent-gray-bg);
+  color: var(--accent-gray);
+}
+
+/* ── Status Dot ── */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotup {
+  background: var(--accent-green);
+  box-shadow: var(--shadow-glow-green);
+}
+
+.dotdown {
+  background: var(--accent-red);
+  box-shadow: var(--shadow-glow-red);
+}
+
+.dotunknown {
+  background: var(--accent-gray);
+}
+
+/* ── URL ── */
+.url {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Meta stats ── */
+.meta {
+  display: flex;
+  gap: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-default);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statValue {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.statValue.good {
+  color: var(--accent-green);
+}
+
+.statValue.warn {
+  color: var(--accent-amber);
+}
+
+.statValue.bad {
+  color: var(--accent-red);
+}

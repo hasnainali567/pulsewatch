@@ -23,6 +23,13 @@ jobs:
         working-directory: app
         run: npm test
 
+      - name: Install frontend deps
+        working-directory: app/frontend
+        run: npm install
+      - name: Build frontend (fast-fail check only - Packer rebuilds it for real)
+        working-directory: app/frontend
+        run: npm run build
+
       - uses: hashicorp/setup-terraform@v3
       - name: Terraform fmt check
         working-directory: infra
