@@ -61,22 +61,7 @@ build {
   }
 
   provisioner "file" {
-    source      = "../app/frontend/package.json"
-    destination = "/tmp/frontend/package.json"
-  }
-
-  provisioner "file" {
-    source      = "../app/frontend/vite.config.js"
-    destination = "/tmp/frontend/vite.config.js"
-  }
-
-  provisioner "file" {
-    source      = "../app/frontend/index.html"
-    destination = "/tmp/frontend/index.html"
-  }
-
-  provisioner "file" {
-    source      = "../app/frontend/src"
+    source      = "../app/frontend"
     destination = "/tmp/frontend"
   }
 
@@ -93,14 +78,10 @@ build {
   # Build the React frontend (separate provisioner so build failure stops the AMI build)
   provisioner "shell" {
     inline = [
-      "sudo mkdir -p /opt/app/frontend",
-      "sudo mv /tmp/frontend/package.json /opt/app/frontend/package.json",
-      "sudo mv /tmp/frontend/vite.config.js /opt/app/frontend/vite.config.js",
-      "sudo mv /tmp/frontend/index.html /opt/app/frontend/index.html",
-      "sudo mv /tmp/frontend/src /opt/app/frontend/src",
+      "sudo mv /tmp/frontend /opt/app/frontend",
       "cd /opt/app/frontend && sudo npm install && sudo npm run build",
       "# Clean up frontend source (only dist/ is needed at runtime)",
-      "sudo rm -rf /opt/app/frontend/node_modules /opt/app/frontend/src /opt/app/frontend/package.json /opt/app/frontend/vite.config.js /opt/app/frontend/index.html"
+      "sudo rm -rf /opt/app/frontend/node_modules /opt/app/frontend/src /opt/app/frontend/package.json /opt/app/frontend/package-lock.json /opt/app/frontend/vite.config.js /opt/app/frontend/index.html"
     ]
   }
 
