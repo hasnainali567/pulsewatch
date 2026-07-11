@@ -60,7 +60,11 @@ build {
     destination = "/tmp/pulsewatch.service"
   }
 
-  # Copy the frontend source onto the instance
+  # Create frontend directory structure, then copy source
+  provisioner "shell" {
+    inline = ["mkdir -p /tmp/frontend/src"]
+  }
+
   provisioner "file" {
     source      = "../app/frontend/package.json"
     destination = "/tmp/frontend/package.json"
