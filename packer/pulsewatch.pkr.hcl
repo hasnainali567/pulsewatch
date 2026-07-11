@@ -77,7 +77,7 @@ build {
 
   provisioner "file" {
     source      = "../app/frontend/src"
-    destination = "/tmp/frontend/src"
+    destination = "/tmp/frontend"
   }
 
   # Install backend into /opt/app and install deps
