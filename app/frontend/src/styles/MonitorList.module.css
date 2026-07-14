@@ -2,7 +2,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  gap: 18px;
   animation: fadeIn 0.3s ease;
 }
 
@@ -12,17 +12,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 60px 20px;
+  gap: 14px;
+  padding: 64px 20px;
   color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 0.875rem;
   text-align: center;
   animation: fadeIn 0.3s ease;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
 }
 
 .statusBox.error {
   color: var(--accent-red);
+  border-color: rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.05);
 }
 
 .errorIcon {
@@ -30,19 +37,21 @@
 }
 
 .emptyIcon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   opacity: 0.6;
+  margin-bottom: 4px;
 }
 
 .hint {
   font-size: 0.75rem;
   color: var(--text-muted);
+  opacity: 0.7;
 }
 
 /* ── Spinner ── */
 .spinner {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border: 3px solid var(--border-default);
   border-top-color: var(--accent-blue);
   border-radius: 50%;

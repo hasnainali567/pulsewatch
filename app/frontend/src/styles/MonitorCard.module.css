@@ -2,29 +2,49 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
-  padding: 20px;
+  gap: 14px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s,
-    transform 0.15s;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: left;
   font-family: inherit;
   color: inherit;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .card:hover {
   background: var(--bg-card-hover);
-  border-color: var(--text-muted);
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-1px);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(59, 130, 246, 0.08);
+  transform: translateY(-2px);
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card:active {
   transform: translateY(0);
+  transition-duration: 0.1s;
 }
 
 /* ── Card Header ── */
@@ -32,7 +52,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .name {
@@ -50,7 +70,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -58,30 +78,35 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
 .badge.up {
   background: var(--accent-green-glow);
   color: var(--accent-green);
+  border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
 .badge.down {
   background: var(--accent-red-glow);
   color: var(--accent-red);
+  border: 1px solid rgba(239, 68, 68, 0.2);
   animation: pulse 2s ease-in-out infinite;
 }
 
 .badge.unknown {
   background: var(--accent-gray-bg);
   color: var(--accent-gray);
+  border: 1px solid rgba(107, 114, 128, 0.2);
 }
 
 /* ── Status Dot ── */
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
 .dotup {
@@ -106,20 +131,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 /* ── Meta stats ── */
 .meta {
   display: flex;
-  gap: 20px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border-default);
+  gap: 24px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .statLabel {
@@ -127,24 +156,39 @@
   font-size: 0.65rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .statValue {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-secondary);
+  transition: color 0.2s ease;
 }
 
 .statValue.good {
   color: var(--accent-green);
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.3);
 }
 
 .statValue.warn {
   color: var(--accent-amber);
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
 }
 
 .statValue.bad {
   color: var(--accent-red);
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .card {
+    padding: 18px;
+  }
+
+  .meta {
+    gap: 16px;
+  }
 }
