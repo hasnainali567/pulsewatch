@@ -83,7 +83,7 @@ export default function App() {
       <header className={styles.header}>
         <div className={styles.titleGroup}>
           <span className={styles.pulse} aria-hidden="true" />
-          <h1 className={styles.title}>PulseWatch</h1>
+          <h1 className={styles.title}>PulseWatch Demo</h1>
         </div>
         <p className={styles.subtitle}>uptime monitoring dashboard</p>
       </header>
